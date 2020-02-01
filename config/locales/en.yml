@@ -34,3 +34,4 @@ en:
     landing_page:
       show:
         register: Register
+        sign_in: Sign in

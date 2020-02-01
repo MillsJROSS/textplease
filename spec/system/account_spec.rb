@@ -22,4 +22,20 @@ RSpec.describe "Account" do
       expect(page).to have_selector(".notice", text: I18n.t("devise.confirmations.confirmed"))
     end
   end
+
+  describe 'signing in' do
+    it "registered user can sign in" do
+      visit root_path
+
+      click_on I18n.t('public.landing_page.show.sign_in')
+
+      within "#new_user" do
+        fill_in "user_email", with: "test@example.com"
+        fill_in "user_password", with: "password"
+        click_on I18n.t('public.landing_page.show.sign_in')
+      end
+
+      expect(page).to have_selector(".notice", text: I18n.t("devise.sessions.signed_in"))
+    end
+  end
 end
