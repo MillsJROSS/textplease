@@ -5,3 +5,6 @@ AllCops:
     - 'bin/**/*'
     - 'node_modules/**/*'
     - 'db/schema.rb'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: space
