@@ -5,6 +5,7 @@ AllCops:
     - 'bin/**/*'
     - 'node_modules/**/*'
     - 'db/schema.rb'
+    - 'db/migrate/**/*'
 
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: space

@@ -61,7 +61,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.before(:each, type: :system) do |example|
+  config.before(:each, type: :system) do |_example|
     driven_by :rack_test
   end
 end
