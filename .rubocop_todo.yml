@@ -18,22 +18,22 @@
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: with_first_argument, with_fixed_indentation
-Layout/ArgumentAlignment:
-  Exclude:
-    - 'bin/webpack'
-    - 'bin/webpack-dev-server'
+#Layout/ArgumentAlignment:
+#  Exclude:
+#    - 'bin/webpack'
+#    - 'bin/webpack-dev-server'
 
 # Offense count: 6
 # Cop supports --auto-correct.
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'bin/bundle'
+#Layout/EmptyLineAfterGuardClause:
+#  Exclude:
+#    - 'bin/bundle'
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/EmptyLines:
-  Exclude:
-    - 'db/migrate/20200201212303_devise_create_users.rb'
+#Layout/EmptyLines:
+#  Exclude:
+#    - 'db/migrate/20200201212303_devise_create_users.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
