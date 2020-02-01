@@ -20,9 +20,9 @@
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/public/landing_page_controller.rb'
+#Style/ClassAndModuleChildren:
+#  Exclude:
+#    - 'app/controllers/public/landing_page_controller.rb'
 
 # Offense count: 8
 Style/Documentation:

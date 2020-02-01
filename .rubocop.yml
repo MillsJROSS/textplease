@@ -12,3 +12,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
