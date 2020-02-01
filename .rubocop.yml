@@ -9,3 +9,6 @@ AllCops:
 
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: space
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
