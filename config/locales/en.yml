@@ -30,8 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  public:
-    landing_page:
-      show:
-        register: Register
-        sign_in: Sign in
+  layouts:
+    navigation:
+      register: Register
+      sign_in: Sign in
+      sign_out: Sign out
