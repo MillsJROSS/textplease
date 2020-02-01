@@ -15,3 +15,6 @@ Style/StringLiterals:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
