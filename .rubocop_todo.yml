@@ -42,17 +42,17 @@
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/public/landing_page_controller.rb'
+#Style/EmptyMethod:
+#  Exclude:
+#    - 'app/controllers/public/landing_page_controller.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'bin/bundle'
-    - 'bin/rails'
-    - 'bin/rake'
+#Style/ExpandPathArguments:
+#  Exclude:
+#    - 'bin/bundle'
+#    - 'bin/rails'
+#    - 'bin/rake'
 
 # Offense count: 43
 # Cop supports --auto-correct.
