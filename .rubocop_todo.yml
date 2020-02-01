@@ -39,15 +39,15 @@
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'db/schema.rb'
+#Layout/EmptyLinesAroundBlockBody:
+#  Exclude:
+#    - 'db/schema.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/EmptyLinesAroundMethodBody:
-  Exclude:
-    - 'app/controllers/public/landing_page_controller.rb'
+#Layout/EmptyLinesAroundMethodBody:
+#  Exclude:
+#    - 'app/controllers/public/landing_page_controller.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
