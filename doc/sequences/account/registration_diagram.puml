@@ -1,0 +1,22 @@
+@startuml
+actor Visitor
+boundary TextPlease
+
+Visitor -> TextPlease : visit
+TextPlease -> Visitor : home page
+
+Visitor -> TextPlease : click on **Register**
+TextPlease -> Visitor : registration page
+
+Visitor -> TextPlease : submit registration form
+
+TextPlease -> TextPlease : Save email/encrypted password
+TextPlease -> Visitor : email confirmation link
+
+Visitor -> TextPlease : click link
+TextPlease -> TextPlease : Save confirmation
+TextPlease -> Visitor : login page
+note right : User Can now login
+
+
+@enduml

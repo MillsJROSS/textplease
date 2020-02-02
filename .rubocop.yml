@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: space
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']

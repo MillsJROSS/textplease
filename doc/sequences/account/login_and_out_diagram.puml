@@ -1,0 +1,18 @@
+@startuml
+actor User
+boundary TextPlease
+
+User -> TextPlease : visit
+TextPlease -> User : home page
+
+User -> TextPlease : click **Sign in**
+TextPlease -> User : sign in page
+
+User -> TextPlease : fill in sign in form
+TextPlease -> TextPlease : validate user credentials
+TextPlease -> User : home page w/ session cookie
+
+User -> TextPlease : click **Sign out**
+TextPlease -> TextPlease : delete session
+TextPlease -> User : home page
+@enduml
