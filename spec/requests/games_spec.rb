@@ -83,7 +83,7 @@ RSpec.describe "Games", type: :request, sign_in: :user do
       get game_path(game)
 
       expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t('global.pundit.unauthorized'))
+      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
   end
 end

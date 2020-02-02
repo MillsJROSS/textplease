@@ -23,6 +23,6 @@ RSpec.describe "Manage Game - ", sign_in: :user do
       expect(page).to have_selector(".game", text: "New Game")
     end
 
-    click_on 'New Game'
+    click_on "New Game"
   end
 end
