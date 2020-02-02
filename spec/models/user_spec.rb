@@ -21,24 +21,23 @@
 #  updated_at             :datetime         not null
 #
 
-
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  describe '#email' do
-    it 'must be present' do
-      user = build(:user, email: '')
+  describe "#email" do
+    it "must be present" do
+      user = build(:user, email: "")
 
       expect(user).not_to be_valid
-      expect(user.errors[:email]).to include(t('errors.messages.blank'))
+      expect(user.errors[:email]).to include(t("errors.messages.blank"))
     end
 
-    it 'must be unique' do
-      first_user = create(:user, email: 'user@example.com')
-      second_user = build(:user, email: 'user@example.com')
+    it "must be unique" do
+      create(:user, email: "user@example.com")
+      second_user = build(:user, email: "user@example.com")
 
       expect(second_user).not_to be_valid
-      expect(second_user.errors[:email]).to include(t('errors.messages.taken'))
+      expect(second_user.errors[:email]).to include(t("errors.messages.taken"))
     end
   end
 end

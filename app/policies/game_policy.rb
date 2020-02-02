@@ -1,9 +1,15 @@
+# frozen_string_literal: true
+
 class GamePolicy < ApplicationPolicy
   def new?
     create?
   end
 
   def create?
+    record.created_by == user
+  end
+
+  def show?
     record.created_by == user
   end
 

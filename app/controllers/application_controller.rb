@@ -12,11 +12,12 @@ class ApplicationController < ActionController::Base
 
   def pundit_authorized
     return if controller_path =~ /devise/
+
     verify_authorized
   end
 
   def user_not_authorized
-    flash[:alert] = t('global.pundit.unauthorize')
+    flash[:alert] = t("global.pundit.unauthorized")
     redirect_to(request.referrer || root_path)
   end
 

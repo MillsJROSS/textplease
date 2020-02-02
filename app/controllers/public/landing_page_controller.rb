@@ -4,6 +4,6 @@ class Public::LandingPageController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
-    authorize [:public, :landing_page]
+    authorize %i[public landing_page]
   end
 end

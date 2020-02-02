@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GamesController < ApplicationController
   def index
     @games = policy_scope(Game)
@@ -11,7 +13,7 @@ class GamesController < ApplicationController
     @game = authorize Game.new(params.require(:game).permit(:name, :created_by_id))
 
     if @game.save
-      flash[:notice] = t('.success')
+      flash[:notice] = t(".success")
       redirect_to games_path
       return
     end
@@ -19,5 +21,9 @@ class GamesController < ApplicationController
     flash.now[:alert] = to_sentence(@game)
 
     render status: 400
+  end
+
+  def show
+    authorize Game.find(params[:id])
   end
 end
