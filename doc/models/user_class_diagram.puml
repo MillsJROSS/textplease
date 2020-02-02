@@ -1,6 +1,146 @@
 @startuml
 
 class User {
+    id :bigint
+    ..
+    email :string
+    ..
+    encrypted_password :string
+    ..
+    reset_password_token :string
+    ..
+    reset_password_sent_at :datetime
+    ..
+    remember_created_at :datetime
+    ..
+    confirmation_token :string
+    ..
+    confirmed_at :datetime
+    ..
+    confirmation_sent_at :datetime
+    ..
+    unconfirmed_email :string
+    ..
+    failed_attempts :integer
+    ..
+    unlock_token :string
+    ..
+    locked_at :datetime
+    ..
+    created_at :datetime
+    ..
+    updated_at :datetime
+    ==
+    **Class Methods**
+
+    ==
+    **Instance Methods**
 
 }
+note right of User
+    <b>Devise Class Methods</b>
+    allow_unconfirmed_access_for
+     allow_unconfirmed_access_for=
+     authentication_keys
+     authentication_keys=
+     case_insensitive_keys
+     case_insensitive_keys=
+     confirm_by_token
+     confirm_within
+     confirm_within=
+     confirmation_keys
+     confirmation_keys=
+     devise_modules
+     devise_modules=
+     devise_modules?
+     email_regexp
+     email_regexp=
+     expire_all_remember_me_on_sign_out
+     expire_all_remember_me_on_sign_out=
+     extend_remember_period
+     extend_remember_period=
+     find_by_unconfirmed_email_with_errors
+     find_first_by_auth_conditions
+     find_for_authentication
+     find_for_database_authentication
+     find_or_initialize_with_error_by
+     find_or_initialize_with_errors
+     http_authenticatable
+     http_authenticatable=
+     http_authenticatable?
+     http_authentication_key
+     http_authentication_key=
+     last_attempt_warning
+     last_attempt_warning=
+     lock_strategy
+     lock_strategy=
+     lock_strategy_enabled?
+     maximum_attempts
+     maximum_attempts=
+     new_with_session
+     params_authenticatable
+     params_authenticatable=
+     params_authenticatable?
+     password_length
+     password_length=
+     pepper
+     pepper=
+     reconfirmable
+     reconfirmable=
+     remember_for
+     remember_for=
+     remember_token
+     rememberable_options
+     rememberable_options=
+     request_keys
+     request_keys=
+     reset_password_by_token
+     reset_password_keys
+     reset_password_keys=
+     reset_password_within
+     reset_password_within=
+     send_confirmation_instructions
+     send_email_changed_notification
+     send_email_changed_notification=
+     send_password_change_notification
+     send_password_change_notification=
+     send_reset_password_instructions
+     send_unlock_instructions
+     serialize_from_cookie
+     serialize_from_session
+     serialize_into_cookie
+     serialize_into_session
+     sign_in_after_change_password
+     sign_in_after_change_password=
+     sign_in_after_reset_password
+     sign_in_after_reset_password=
+     skip_session_storage
+     skip_session_storage=
+     stretches
+     stretches=
+     strip_whitespace_keys
+     strip_whitespace_keys=
+     timeout_in
+     timeout_in=
+     unlock_access_by_token
+     unlock_in
+     unlock_in=
+     unlock_keys
+     unlock_keys=
+     unlock_strategy
+     unlock_strategy=
+     unlock_strategy_enabled?
+     with_reset_password_token
+end note
+
+note right of User
+   <b>Devise Instance Methods</b>
+   password
+   password_confirmation=
+   devise_modules
+   devise_modules?
+   current_password
+   password_confirmation
+end note
+
 @enduml
