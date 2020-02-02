@@ -1,0 +1,25 @@
+@startuml
+
+class Game {
+    id :bigint
+    ..
+    name :string
+    ..
+    created_by :user_reference
+    ..
+    created_at :timestamp
+    ..
+    updated_at :timepstamp
+    ==
+    **Class Methods**
+
+    ==
+    **Instance Methods**
+
+}
+
+class User
+
+User - Game : has many >
+
+@enduml

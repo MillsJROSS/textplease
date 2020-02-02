@@ -41,6 +41,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Capybara::RSpecMatchers, type: :request
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -70,4 +71,10 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do |_example|
     driven_by :rack_test
   end
+
+  config.before(:each, sign_in: :user) do
+    @user = create(:user, :confirmed)
+    sign_in @user
+  end
+
 end

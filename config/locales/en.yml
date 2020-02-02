@@ -30,8 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  global:
+    submit: Submit
+    pundit:
+      unauthorized: You are not authorized to perform this action.
   layouts:
     navigation:
       register: Register
       sign_in: Sign in
       sign_out: Sign out
+      my_games: My Games
+  games:
+    index:
+      create: Create Games
+    create:
+      success: A new game has been created.
+  activerecord:
+    models:
+      game: Game
+    attributes:
+      game:
+        name: Name
