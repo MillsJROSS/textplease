@@ -156,7 +156,7 @@ RSpec.describe "Games", type: :request, sign_in: :user do
 
       expect {
         delete game_path(game)
-      }.not_to change { Game.count }
+      }.not_to(change { Game.count })
 
       expect(response).to redirect_to(root_path)
       expect(flash.alert).to eq(t("global.pundit.unauthorized"))

@@ -33,9 +33,8 @@ class GamesController < ApplicationController
   def update
     @game = authorize Game.find(params[:id])
 
-    if @game.update(params.require(:game).permit(:name))
-      flash[:notice] = t(".success")
-      redirect_to game_path(@game)
+    if @game.update(update_params)
+      redirect_to game_path(@game), notice: t(".success")
       return
     end
 
@@ -47,5 +46,11 @@ class GamesController < ApplicationController
     @game = authorize Game.find(params[:id])
     @game.destroy!
     redirect_to games_path, notice: t(".success")
+  end
+
+  private
+
+  def update_params
+    params.require(:game).permit(:name)
   end
 end
