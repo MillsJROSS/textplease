@@ -34,7 +34,7 @@ class GamesController < ApplicationController
     @game = authorize Game.find(params[:id])
 
     if @game.update(params.require(:game).permit(:name))
-      flash[:notice] = t('.success')
+      flash[:notice] = t(".success")
       redirect_to game_path(@game)
       return
     end
@@ -46,6 +46,6 @@ class GamesController < ApplicationController
   def destroy
     @game = authorize Game.find(params[:id])
     @game.destroy!
-    redirect_to games_path, notice: t('.success')
+    redirect_to games_path, notice: t(".success")
   end
 end

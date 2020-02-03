@@ -26,7 +26,7 @@ RSpec.describe "Manage Game - ", sign_in: :user do
     click_on game_name
 
     # Edit Game
-    click_on t('global.edit')
+    click_on t("global.edit")
     changed_game_name = "#{game_name}_change"
     within "#game_#{Game.last.id}" do
       fill_in t("activerecord.attributes.game.name"), with: changed_game_name
@@ -37,8 +37,8 @@ RSpec.describe "Manage Game - ", sign_in: :user do
     expect(page).to have_selector(".game", text: changed_game_name)
 
     # Delete Game
-    click_on t('global.delete')
+    click_on t("global.delete")
 
-    expect(page).not_to have_selector('.game', text: changed_game_name)
+    expect(page).not_to have_selector(".game", text: changed_game_name)
   end
 end
