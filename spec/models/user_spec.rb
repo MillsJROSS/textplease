@@ -40,4 +40,13 @@ RSpec.describe User, type: :model do
       expect(second_user.errors[:email]).to include(t("errors.messages.taken"))
     end
   end
+
+  describe '#games' do
+    it 'gives us the list of games associated with user' do
+      user = create(:user)
+      games = create_list(:game, 5, created_by: user)
+
+      expect(user.games.ids).to include(*games.map(&:id))
+    end
+  end
 end

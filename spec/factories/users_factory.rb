@@ -35,5 +35,11 @@ FactoryBot.define do
     trait :unconfirmed do
       confirmed_at { nil }
     end
+
+    factory :user_with_game do
+      after(:create) do |user, evaluator|
+        create(:game, created_by: user)
+      end
+    end
   end
 end

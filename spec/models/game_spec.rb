@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: games
+#
+#  id            :bigint           not null, primary key
+#  name          :string
+#  created_by_id :bigint
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+
 require "rails_helper"
 
 RSpec.describe Game, type: :model do
@@ -30,6 +42,16 @@ RSpec.describe Game, type: :model do
       game_w_user2 = build(:game, name: "One", created_by: user2)
 
       expect(game_w_user2).to be_valid
+    end
+  end
+
+  describe '#locations' do
+    it 'can retrieve locations' do
+      user = create(:user_with_game)
+      game = user.games.first
+      locations = create_list(:location, 5, game: game)
+
+      expect(game.reload.locations).to include(*locations)
     end
   end
 end

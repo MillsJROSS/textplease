@@ -1,0 +1,24 @@
+@startuml
+
+class Location {
+    id :bigint
+    ..
+    name :string
+    ..
+    game :game_reference
+    ..
+    enter_location_text: text
+    ..
+    created_at :timestamp
+    ..
+    updated_at :timepstamp
+    ==
+    **Class Methods**
+    ==
+    **Instance Methods**
+}
+
+class Game
+
+Game - Location : has many >
+@enduml

@@ -1,3 +1,7 @@
 <%= render @game %>
 <%= link_to t('global.edit'), edit_game_path(@game) %>
 <%= link_to t('global.delete'), game_path(@game), method: :delete, data: {confirm: t('global.you_sure') } %>
+<%= link_to t('.manage_location'), locations_path(game_id: @game.id) %>
+<div class="locations">
+
+</div>

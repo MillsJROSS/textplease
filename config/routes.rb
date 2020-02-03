@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root "public/landing_page#show"
 
   resources :games
+  resources :locations
 end

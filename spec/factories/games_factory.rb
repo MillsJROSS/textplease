@@ -2,7 +2,9 @@
 
 FactoryBot.define do
   factory :game do
-    name { "MyString" }
+    sequence :name do |i|
+      "Name #{i}"
+    end
     created_by { "" }
   end
 end

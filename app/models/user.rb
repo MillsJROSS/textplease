@@ -27,4 +27,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable
+
+  has_many :games, foreign_key: 'created_by_id'
 end
