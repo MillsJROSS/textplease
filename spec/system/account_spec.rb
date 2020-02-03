@@ -29,7 +29,7 @@ RSpec.describe "Account" do
 
       visit root_path
 
-      expect(page).not_to have_selector('a', text: t("layouts.navigation.sign_out"))
+      expect(page).not_to have_selector("a", text: t("layouts.navigation.sign_out"))
       click_on t("layouts.navigation.sign_in")
 
       within "#new_user" do
@@ -86,14 +86,14 @@ RSpec.describe "Account" do
   end
 
   describe "signing out" do
-    it 'goes back to root path' do
+    it "goes back to root path" do
       sign_in create(:user, :confirmed)
 
       visit root_path
 
-      expect(page).not_to have_selector('a', text: t('layouts.navigation.sign_in'))
-      expect(page).not_to have_selector('a', text: t('layouts.navigation.register'))
-      click_on t('layouts.navigation.sign_out')
+      expect(page).not_to have_selector("a", text: t("layouts.navigation.sign_in"))
+      expect(page).not_to have_selector("a", text: t("layouts.navigation.register"))
+      click_on t("layouts.navigation.sign_out")
 
       expect(page).to have_selector(".notice", text: t("devise.sessions.signed_out"))
       expect(current_path).to eq(root_path)

@@ -21,7 +21,6 @@
 #  updated_at             :datetime         not null
 #
 
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :trackable and :omniauthable

@@ -1,0 +1,8 @@
+<%= form_with model: game, id: dom_id(game) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.hidden_field :created_by_id %>
+
+  <%= f.submit t('global.submit') %>
+<% end %>

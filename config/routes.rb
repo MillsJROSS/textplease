@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "public/landing_page#show"
+
+  resources :games
 end
