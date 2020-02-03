@@ -32,6 +32,9 @@
 en:
   global:
     submit: Submit
+    edit: Edit
+    delete: Delete
+    you_sure: Are you sure you want to do this?
     pundit:
       unauthorized: You are not authorized to perform this action.
   layouts:
@@ -45,6 +48,10 @@ en:
       create: Create Games
     create:
       success: A new game has been created.
+    update:
+      success: Your game has been edited.
+    destroy:
+      success: Your game have beed deleted.
   activerecord:
     models:
       game: Game

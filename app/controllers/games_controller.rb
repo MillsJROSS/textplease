@@ -19,11 +19,33 @@ class GamesController < ApplicationController
     end
 
     flash.now[:alert] = to_sentence(@game)
-
     render status: 400
   end
 
   def show
-    authorize Game.find(params[:id])
+    @game = authorize Game.find(params[:id])
+  end
+
+  def edit
+    @game = authorize Game.find(params[:id])
+  end
+
+  def update
+    @game = authorize Game.find(params[:id])
+
+    if @game.update(params.require(:game).permit(:name))
+      flash[:notice] = t('.success')
+      redirect_to game_path(@game)
+      return
+    end
+
+    flash.now[:alert] = to_sentence(@game)
+    render status: 400
+  end
+
+  def destroy
+    @game = authorize Game.find(params[:id])
+    @game.destroy!
+    redirect_to games_path, notice: t('.success')
   end
 end

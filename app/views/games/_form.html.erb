@@ -1,4 +1,4 @@
-<%= form_with model: game, id: 'new_game' do |f| %>
+<%= form_with model: game, id: dom_id(game) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 

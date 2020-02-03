@@ -13,6 +13,18 @@ class GamePolicy < ApplicationPolicy
     record.created_by == user
   end
 
+  def edit?
+    record.created_by == user
+  end
+
+  def update?
+    record.created_by == user
+  end
+
+  def destroy?
+    record.created_by == user
+  end
+
   class Scope < ApplicationPolicy::Scope
     def resolve
       scope.where(created_by: user)
