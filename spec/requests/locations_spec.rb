@@ -6,7 +6,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
   describe "GET /location?game_id=:game_id" do
     it "shows only locations for specified game" do
       game = create(:game, created_by: @user)
-      locations = create_list(:location, 3, game: game)
+      create_list(:location, 3, game: game)
       other_game = create(:game, created_by: @user)
       create_list(:location, 4, game: other_game)
 
@@ -20,7 +20,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
     it "does not allow you to see other users locations" do
       other_user = create(:user)
       game = create(:game, created_by: other_user)
-      locations = create_list(:location, 3, game: game)
+      create_list(:location, 3, game: game)
 
       get locations_path(game_id: game.id)
 
@@ -60,7 +60,8 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect {
         post locations_path, params: { location: { name: "", game_id: game.id,
-                                                   enter_location_text: "Some text..." } }, xhr: true
+                                                   enter_location_text: "Some text..." } },
+                             xhr: true
       }.to change { Game.count }.by(0)
 
       expect(response).to have_http_status(400)
