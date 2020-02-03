@@ -37,7 +37,7 @@ FactoryBot.define do
     end
 
     factory :user_with_game do
-      after(:create) do |user, evaluator|
+      after(:create) do |user, _evaluator|
         create(:game, created_by: user)
       end
     end

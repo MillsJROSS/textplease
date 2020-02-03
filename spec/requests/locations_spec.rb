@@ -25,7 +25,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
       get locations_path(game_id: game.id)
 
       expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t('global.pundit.unauthorized'))
+      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect {
         post locations_path, params: { location: { name: "New Game", game_id: game.id,
-                                                   enter_location_text: 'Some text...'} }
+                                                   enter_location_text: "Some text..." } }
       }.to change { game.locations.count }.by(1)
 
       expect(response).to redirect_to(locations_path(game_id: game.id))
@@ -48,7 +48,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect {
         post locations_path, params: { location: { name: "New Game", game_id: other_game.id,
-                                                   enter_location_text: 'Some text...'} }
+                                                   enter_location_text: "Some text..." } }
       }.to change { other_game.locations.count }.by(0)
 
       expect(response).to redirect_to(root_path)
@@ -60,7 +60,7 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect {
         post locations_path, params: { location: { name: "", game_id: game.id,
-                                                   enter_location_text: 'Some text...'} }, xhr: true
+                                                   enter_location_text: "Some text..." } }, xhr: true
       }.to change { Game.count }.by(0)
 
       expect(response).to have_http_status(400)
@@ -72,8 +72,8 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect {
         post locations_path, params: { location: { name: "", game_id: game.id,
-                                                   enter_location_text: 'Some text...'} },
-             xhr: false
+                                                   enter_location_text: "Some text..." } },
+                             xhr: false
       }.to change { Game.count }.by(0)
 
       expect(response).to have_http_status(400)
@@ -89,10 +89,10 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect(response).to have_http_status(200)
       expect(response.body)
-          .to have_selector("#location_game_id[value=#{game.id}]", visible: false)
+        .to have_selector("#location_game_id[value=#{game.id}]", visible: false)
     end
 
-    it 'prevents user from trying to create new location with other user game' do
+    it "prevents user from trying to create new location with other user game" do
       other_user = create(:user)
       game = create(:game, created_by: other_user)
 

@@ -11,7 +11,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 class Game < ApplicationRecord
   belongs_to :created_by, class_name: "User"
 

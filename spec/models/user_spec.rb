@@ -41,8 +41,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#games' do
-    it 'gives us the list of games associated with user' do
+  describe "#games" do
+    it "gives us the list of games associated with user" do
       user = create(:user)
       games = create_list(:game, 5, created_by: user)
 

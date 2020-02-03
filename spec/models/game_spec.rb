@@ -11,7 +11,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 require "rails_helper"
 
 RSpec.describe Game, type: :model do
@@ -45,8 +44,8 @@ RSpec.describe Game, type: :model do
     end
   end
 
-  describe '#locations' do
-    it 'can retrieve locations' do
+  describe "#locations" do
+    it "can retrieve locations" do
       user = create(:user_with_game)
       game = user.games.first
       locations = create_list(:location, 5, game: game)

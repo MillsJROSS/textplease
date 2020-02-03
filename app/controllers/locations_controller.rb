@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationsController < ApplicationController
   def index
     @game = authorize Game.find(params[:game_id])
@@ -15,7 +17,7 @@ class LocationsController < ApplicationController
     @location.game = game
 
     if @location.save
-      redirect_to locations_path(game_id: game.id), notice: t('.success')
+      redirect_to locations_path(game_id: game.id), notice: t(".success")
       return
     end
 

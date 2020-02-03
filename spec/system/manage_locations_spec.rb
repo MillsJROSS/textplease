@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Manage Location - ", sign_in: :user do
   it "lifecycle of a location" do
-    location_name = 'The Mountain'
+    location_name = "The Mountain"
     game = create(:game, created_by: @user)
 
     visit game_path(game)
@@ -17,12 +17,12 @@ RSpec.describe "Manage Location - ", sign_in: :user do
 
     # Create A Location
     click_on t("locations.index.create")
-    within '#new_location' do
-      fill_in t('activerecord.attributes.location.name'), with: location_name
-      fill_in t('activerecord.attributes.location.enter_location_text'), with: 'Long Message'
-      click_on t('global.submit')
+    within "#new_location" do
+      fill_in t("activerecord.attributes.location.name"), with: location_name
+      fill_in t("activerecord.attributes.location.enter_location_text"), with: "Long Message"
+      click_on t("global.submit")
     end
-    within '.locations' do
+    within ".locations" do
       expect(page).to have_selector(".location", text: location_name)
     end
 

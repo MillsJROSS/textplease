@@ -28,5 +28,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  has_many :games, foreign_key: 'created_by_id'
+  has_many :games, foreign_key: "created_by_id"
 end
