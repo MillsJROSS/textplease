@@ -214,7 +214,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
         delete location_path(location)
       }.not_to(change { Location.count })
 
-
       expect(response).to redirect_to(root_path)
       expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
