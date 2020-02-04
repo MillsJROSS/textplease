@@ -9,6 +9,22 @@ class LocationPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.game.created_by_id == user.id
+  end
+
+  def edit?
+    record.game.created_by_id == user.id
+  end
+
+  def update?
+    record.game.created_by_id == user.id
+  end
+
+  def destroy?
+    record.game.created_by_id == user.id
+  end
+
   class Scope
     attr_reader :user, :game
 

@@ -97,6 +97,16 @@ RSpec.describe "Games", type: :request, sign_in: :user do
       expect(response).to have_http_status(200)
       expect(response.body).to have_selector("form#game_#{game.id}")
     end
+
+    it "won't let you edit other users game" do
+      other_user = create(:user)
+      game = create(:game, created_by: other_user)
+
+      get edit_game_path(game)
+
+      expect(response).to redirect_to(root_path)
+      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
+    end
   end
 
   describe "PUT /games/:id" do

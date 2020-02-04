@@ -1,0 +1,3 @@
+<%= render @location %>
+<%= link_to t('global.edit'), edit_location_path(@location) %>
+<%= link_to t('global.delete'), location_path(@location), method: :delete, data: {confirm: t('global.you_sure') } %>

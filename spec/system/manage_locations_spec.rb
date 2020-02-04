@@ -26,27 +26,23 @@ RSpec.describe "Manage Location - ", sign_in: :user do
       expect(page).to have_selector(".location", text: location_name)
     end
 
-    # within ".games" do
-    #   expect(page).to have_selector(".game", text: game_name)
-    # end
-    #
-    # # View Game
-    # click_on game_name
-    #
-    # # Edit Game
-    # click_on t("global.edit")
-    # changed_game_name = "#{game_name}_change"
-    # within "#game_#{Game.last.id}" do
-    #   fill_in t("activerecord.attributes.game.name"), with: changed_game_name
-    #   click_on t("global.submit")
-    # end
-    #
-    # # View Change
-    # expect(page).to have_selector(".game", text: changed_game_name)
-    #
-    # # Delete Game
-    # click_on t("global.delete")
-    #
-    # expect(page).not_to have_selector(".game", text: changed_game_name)
+    # View Location
+    click_on location_name
+
+    # Edit Location
+    click_on t("global.edit")
+    changed_location_name = "#{location_name}_change"
+    within "#location_#{Location.last.id}" do
+      fill_in t("activerecord.attributes.location.name"), with: changed_location_name
+      click_on t("global.submit")
+    end
+
+    # View Change
+    expect(page).to have_selector(".location", text: changed_location_name)
+
+    # Delete Location
+    click_on t("global.delete")
+
+    expect(page).not_to have_selector(".location", text: changed_location_name)
   end
 end

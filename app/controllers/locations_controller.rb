@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LocationsController < ApplicationController
-  before_action :set_and_authorize_game
+  before_action :set_and_authorize_game, only: %w[ index new create ]
 
   def index
     @locations = policy_scope @game, policy_scope_class: LocationPolicy::Scope
@@ -22,6 +22,30 @@ class LocationsController < ApplicationController
 
     flash.now[:alert] = to_sentence(@location)
     render status: 400
+  end
+
+  def show
+    @location = authorize Location.find(params[:id])
+  end
+
+  def edit
+    @location = authorize Location.find(params[:id])
+  end
+
+  def update
+    @location = authorize Location.find(params[:id])
+    if @location.update(params.require(:location).permit(:name, :enter_location_text))
+      return redirect_to location_path(@location), notice: t('.success')
+    end
+
+    flash.now[:alert] = to_sentence(@location)
+    render status: 400
+  end
+
+  def destroy
+    @location = authorize Location.find(params[:id])
+    @location.destroy!
+    redirect_to locations_path(game_id: @location.game_id), notice: t('.success')
   end
 
   private
