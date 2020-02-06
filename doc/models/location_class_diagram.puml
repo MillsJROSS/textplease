@@ -16,6 +16,7 @@ class Location {
     **Class Methods**
     ==
     **Instance Methods**
+    Game game()
 }
 
 class Game
