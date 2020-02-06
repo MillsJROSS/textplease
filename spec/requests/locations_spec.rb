@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Location", type: :request, sign_in: :user do
+RSpec.describe "Location", type: :request, sign_in: :user, game_locations: true  do
   describe "GET /location?game_id=:game_id" do
     it "shows only locations for specified game" do
       game = create(:game, created_by: @user)
@@ -15,17 +15,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
       expect(response).to have_http_status(200)
       expect(response.body).to have_selector(".locations")
       expect(response.body).to have_selector(".location", count: 3)
-    end
-
-    it "does not allow you to see other users locations" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-      create_list(:location, 3, game: game)
-
-      get locations_path(game_id: game.id)
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
   end
 
@@ -40,19 +29,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect(response).to redirect_to(locations_path(game_id: game.id))
       expect(flash.notice).to eq(t("locations.create.success"))
-    end
-
-    it "prevents user from using invalid game_id" do
-      other_user = create(:user)
-      other_game = create(:game, created_by: other_user)
-
-      expect {
-        post locations_path, params: { location: { name: "New Game", game_id: other_game.id,
-                                                   enter_location_text: "Some text..." } }
-      }.to change { other_game.locations.count }.by(0)
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
 
     it "handles errors xhr true" do
@@ -92,15 +68,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
       expect(response.body)
         .to have_selector("#location_game_id[value=#{game.id}]", visible: false)
     end
-
-    it "prevents user from trying to create new location with other user game" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-
-      get new_location_path(game_id: game.id)
-
-      expect(response).to redirect_to(root_path)
-    end
   end
 
   describe "GET /location/:id" do
@@ -113,17 +80,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
       expect(response).to have_http_status(200)
       expect(response.body).to have_selector(".location", text: "Unique Name")
     end
-
-    it "errors for locations from another user" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-      location = create(:location, game: game)
-
-      get location_path(location)
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
-    end
   end
 
   describe "GET /location/:id/edit" do
@@ -135,17 +91,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect(response).to have_http_status(200)
       expect(response.body).to have_selector("form#location_#{location.id}")
-    end
-
-    it "won't go to an edit page of another user" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-      location = create(:location, game: game)
-
-      get edit_location_path(location)
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
   end
 
@@ -179,17 +124,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
       expect(response).to have_http_status(400)
       expect(flash.alert).to be_present
     end
-
-    it "prevents you from updating another users location" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-      location = create(:location, game: game)
-
-      put location_path(location), params: { location: { name: "Change the name" } }
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
-    end
   end
 
   describe "DELETE /locations/:id" do
@@ -203,19 +137,6 @@ RSpec.describe "Location", type: :request, sign_in: :user do
 
       expect(response).to redirect_to(locations_path(game_id: game.id))
       expect(flash.notice).to eq(t("locations.destroy.success"))
-    end
-
-    it "prevents user from deleting other users game" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-      location = create(:location, game: game)
-
-      expect {
-        delete location_path(location)
-      }.not_to(change { Location.count })
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
 
     it "informs user on destroy failure" do

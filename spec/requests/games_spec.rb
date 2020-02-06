@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Games", type: :request, sign_in: :user do
+RSpec.describe "Games", type: :request, sign_in: :user, games: true do
   describe "GET /games" do
     it "shows only games for current_user" do
       other_user = create(:user)

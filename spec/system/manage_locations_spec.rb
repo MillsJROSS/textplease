@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Manage Location - ", sign_in: :user do
+RSpec.describe "Manage Location - ", sign_in: :user, game_locations: true  do
   it "lifecycle of a location" do
     location_name = "The Mountain"
     game = create(:game, created_by: @user)

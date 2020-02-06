@@ -14,7 +14,7 @@
 
 require "rails_helper"
 
-RSpec.describe Location, type: :model do
+RSpec.describe Location, type: :model, game_locations: true  do
   describe "#name" do
     it "does not allow an identical name in the same game" do
       user = create(:user_with_game)

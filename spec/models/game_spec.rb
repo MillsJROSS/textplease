@@ -13,7 +13,7 @@
 
 require "rails_helper"
 
-RSpec.describe Game, type: :model do
+RSpec.describe Game, type: :model, games: true do
   describe "#name" do
     it "can not be blank" do
       user = create(:user)

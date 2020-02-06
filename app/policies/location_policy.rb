@@ -2,11 +2,11 @@
 
 class LocationPolicy < ApplicationPolicy
   def new?
-    true
+    record.game.created_by_id == user.id
   end
 
   def create?
-    true
+    record.game.created_by_id == user.id
   end
 
   def show?

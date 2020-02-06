@@ -12,8 +12,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = authorize Location.new(create_params)
-    @location.game = @game
+    @location = authorize Location.new(create_params.merge(game: @game))
 
     if @location.save
       redirect_to locations_path(game_id: @game.id), notice: t(".success")

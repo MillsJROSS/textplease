@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Manage Game - ", sign_in: :user do
+RSpec.describe "Manage Game - ", sign_in: :user, games: true do
   it "lifecycle of a game" do
     game_name = "New Game"
 
