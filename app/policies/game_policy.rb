@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class GamePolicy < ApplicationPolicy
+  def index?
+    record.created_by == user
+  end
+
   def new?
     create?
   end

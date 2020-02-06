@@ -51,10 +51,24 @@ en:
     update:
       success: Your game has been edited.
     destroy:
-      success: Your game have beed deleted.
+      success: Your game has been deleted.
+    show:
+      manage_location: Manage Locations
+  locations:
+    index:
+      create: Create new Location
+    create:
+      success: Location has been created.
+    update:
+      success: Location has been updated.
+    destroy:
+      success: Location has been deleted.
   activerecord:
     models:
       game: Game
     attributes:
       game:
         name: Name
+      location:
+        name: Name
+        enter_location_text: Text when entering location

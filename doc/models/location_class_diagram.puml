@@ -1,27 +1,25 @@
 @startuml
 
-class Game {
+class Location {
     id :bigint
     ..
     name :string
     ..
-    created_by :user_reference
+    game :game_reference
+    ..
+    enter_location_text: text
     ..
     created_at :timestamp
     ..
     updated_at :timepstamp
     ==
     **Class Methods**
-
     ==
     **Instance Methods**
-    User created_by()
-    Location[] locations()
-
+    Game game()
 }
 
-class User
+class Game
 
-User - Game : has many >
-
+Game - Location : has many >
 @enduml

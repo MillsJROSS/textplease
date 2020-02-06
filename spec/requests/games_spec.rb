@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Games", type: :request, sign_in: :user do
+RSpec.describe "Games", type: :request, sign_in: :user, games: true do
   describe "GET /games" do
     it "shows only games for current_user" do
       other_user = create(:user)
@@ -76,16 +76,6 @@ RSpec.describe "Games", type: :request, sign_in: :user do
       expect(response).to have_http_status(200)
       expect(response.body).to have_selector(".game", text: "Unique Name")
     end
-
-    it "errors for games from another user" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-
-      get game_path(game)
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
-    end
   end
 
   describe "GET /games/:id/edit" do
@@ -126,16 +116,6 @@ RSpec.describe "Games", type: :request, sign_in: :user do
       expect(response).to have_http_status(400)
       expect(flash.alert).to be_present
     end
-
-    it "prevents you from editing another users game" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-
-      put game_path(game), params: { game: { name: "Change Name" } }
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
-    end
   end
 
   describe "DELETE /games/:id" do
@@ -148,18 +128,6 @@ RSpec.describe "Games", type: :request, sign_in: :user do
 
       expect(response).to redirect_to(games_path)
       expect(flash.notice).to eq(t("games.destroy.success"))
-    end
-
-    it "prevents user from deleting other users game" do
-      other_user = create(:user)
-      game = create(:game, created_by: other_user)
-
-      expect {
-        delete game_path(game)
-      }.not_to(change { Game.count })
-
-      expect(response).to redirect_to(root_path)
-      expect(flash.alert).to eq(t("global.pundit.unauthorized"))
     end
 
     it "informs user on destroy failure" do

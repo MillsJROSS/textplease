@@ -1,0 +1,11 @@
+<%= form_with model: location, id: dom_id(location) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :enter_location_text %>
+  <%= f.text_area :enter_location_text %>
+
+  <%= f.hidden_field :game_id %>
+
+  <%= f.submit t('global.submit')%>
+<% end %>

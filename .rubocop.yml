@@ -24,7 +24,7 @@ Layout/LineLength:
   Max: 100
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  ExcludedMethods: ['describe', 'context', 'it']
 
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining

@@ -35,7 +35,7 @@ class User {
 
     ==
     **Instance Methods**
-
+    Game[] games()
 }
 note right of User
     <b>Devise Class Methods</b>
